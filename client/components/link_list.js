@@ -4,16 +4,16 @@ import { Links } from '../../imports/collections/links'
 
 class LinkList extends Component {
     renderRows() {
-        
-
+    
         return this.props.links.map(link => {
-            const shortLink = `http://localhost:3000/${link.token}`
+            const { url, token, clicks} = links
+            const shortLink = `http://localhost:3000/${token}`
 
             return (
-                <tr>
-                  <td>{link.url}</td>
+                <tr key={token}>
+                  <td>{url}</td>
                   <td><a href={shortLink}>{shortLink}</a></td>
-                  <td>{link.clicks}</td>
+                  <td>{clicks}</td>
                 </tr>
             )
         })
@@ -30,7 +30,7 @@ class LinkList extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.renderRows()}
+                { this.renderRows() }
               </tbody>
             </table>
         )
